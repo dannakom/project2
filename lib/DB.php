@@ -1,16 +1,27 @@
-<?php 
+<?php
 
+class DB
+{
+    private $conn;
+    private static $instance;
 
-class DB {
-	private static $conn;
-	
-	public function getConnection() {
-		if (empty(static::$conn)) {
-			return static::$conn = new mysqli('localhost', 'root', '', 'schooldb');
-		} else {
-			return static::$conn;
-		}
-	}
+    private function __construct() {
+        $this->conn = new mysqli('localhost', 'root', '', 'school_db'. '');
+        if ($this->conn->errno) {
+            echo $this->conn->error;
+            die();
+        }
+    }
 
-	private function __construct() {}
+    public static function getInstance() {
+        if (empty(self::$instance)) {
+            return self::$instance = new self();
+        } else {
+            return self::$instance;
+        }
+    }
+
+    public function getConnection() {
+        return $this->conn;
+    }
 }

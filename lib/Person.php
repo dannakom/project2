@@ -1,6 +1,6 @@
 <?php 
 
-abstract class Individual {
+abstract class Person {
     
     protected $id;
     protected $name;
@@ -18,4 +18,6 @@ abstract class Individual {
         }
     
 }
+
+
 

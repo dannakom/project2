@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `school_db`
+-- Database: `schooldb`
 --
 
 -- --------------------------------------------------------
@@ -40,12 +40,11 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `name`, `phone`, `email`, `image`, `course`) VALUES
-(1, 'Mike Wazowsk', 501234582, 'MikeWazowski@gmail.com', 'Mike Wazowski.jpg', 'Native Monsters'),
-(2, 'James P.Sullivan', 541234568, 'jamesPsullivan@gmai.com', 'james p.sullivan.jpg', 'Basics of Canister Design'),
-(3, 'Randall Boggs', 509876543, 'RandallBoggs@gmail.com', 'Randall Boggs.jpg', 'Native Monsters'),
-(4, 'Art', 501111111, 'art@gmail.com', 'Art2.jpg', 'The Origins of the Literature of Fear '),
-(6, ' Don Carlton', 501234543, 'DonCarlton@gmail.com', 'Don_Carlton.jpg', 'Advanced Door Properties'),
-(13, '235', 234, '111@gmail.com', 'profile.png', 'Semantics');
+(1, 'Eric clapton', 111111111, 'clapton@gmail.com', 'EricClapton.jpg', 'Java Script'),
+(2, 'mark knopfler', 222222222, 'mark_knopfler@gmai.com', 'mark_knopfler.jpg', 'Java'),
+(3, 'Neil Yung', 333333333, 'NeilYung@gmail.com', 'NeilYung.jpg', 'PHP'),
+(4, 'Sting', 444444444, 'sting@gmail.com', 'sting.jpg', 'PHP '),
+(5, 'john lennon', 234, 'john_lennon@gmail.com', 'john_lennon.png', 'Java Script');
 
 --
 -- Indexes for dumped tables

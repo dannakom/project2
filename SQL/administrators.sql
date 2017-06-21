@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `schooldb`
+-- Database: `school_db`
 --
 
 -- --------------------------------------------------------
@@ -41,10 +41,10 @@ CREATE TABLE `administrators` (
 --
 
 INSERT INTO `administrators` (`id`, `name`, `phone`, `email`, `password`, `image`, `role`) VALUES
-(1, 'Elvis', 123456789, 'Elvis@gmail.com', '$2y$10$bMDXlKllUNPze3eeA9lfwe0aYv9D97jsqYCgTwHE0QvVLlsGM5As6', 'Elvis.jpg', 1),
-(2, 'janis Joplin', 234567890, 'Joplin@gmail.com', '$2y$10$gyQS61D4fpA57bsIObmfWeIO9ZDFTjVyGWomN.gYx04MXky775FYm', 'Joplin.jpg', 2),
-(3, 'Bob Marley', 549998887, 'Marley@gmail.com', '$2y$10$yUTuJisr3uMek3TtDNhacOIcltuVSrx8DqMcgoNjacqFs/nhZ/JZG', 'Msarley.jpg', 3),
-(4, 'BB King', 501111111, 'BB_King@gmail.com', '$2y$10$I1OOrfwNRxL3VH3FfNrzJOBfoCRhd1tCClhVk9DCoaXkZjoLDY8nG', 'BB_King.jpg', 2);
+(1, 'Dean Hardscrabble', 521234567, 'DeanHardscrabble@gmail.com', '$2y$10$bMDXlKllUNPze3eeA9lfwe0aYv9D97jsqYCgTwHE0QvVLlsGM5As6', 'dean hardscrabble.jpg', 1),
+(2, 'professor Knight', 526666666, 'knight@gmail.com', '$2y$10$gyQS61D4fpA57bsIObmfWeIO9ZDFTjVyGWomN.gYx04MXky775FYm', 'professor knight.jpg', 2),
+(3, 'Roz', 549998887, 'roz@gmail.com', '$2y$10$yUTuJisr3uMek3TtDNhacOIcltuVSrx8DqMcgoNjacqFs/nhZ/JZG', 'roz.jpg', 3),
+(4, 'Rufus Oozeman', 501111111, 'rufusoozeman@gmail.com', '$2y$10$I1OOrfwNRxL3VH3FfNrzJOBfoCRhd1tCClhVk9DCoaXkZjoLDY8nG', 'Rufus_Oozeman.jpg', 2);
 
 --
 -- Indexes for dumped tables
