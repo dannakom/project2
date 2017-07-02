@@ -1,37 +1,62 @@
     <?php 
 
-    include 'ISavable.php';
+    
+
+    session_start();
+    
+include 'ISavable.php';
     include 'Person.php';
     include 'Student.php';
     include 'Course.php';
     include 'DB.php';
 
-    session_start();
-
-
+   // $dataObj=$_POST['dataObj'];
+    
     if(!isset($_SESSION["user_id"])){
         verifyLogin($user,$pass);
     } 
+    if(isset($_POST['id']) && !empty($_POST['id'])){
+     $id=$_POST['id'];
+    }
 
     if(isset($_POST['func']) && !empty($_POST['func'])) {
        // echo "func".$_POST['func'];
         $func = $_POST['func'];
         switch($func) {
-            case 'getCoursesJason' :echo getCoursesJason();
+            case 'getCoursesJason': echo getCoursesJason();
                 break;
-            case 'getStudentJason' :echo getStudentJason();
+            case 'getStudentJason': echo getStudentJason();
                 break;
-            case 'getCoursesNumber' :echo getCoursesNumber();
+            case 'getCoursesNumber': echo getCoursesNumber();
                 break;
-            case 'getStudentsNumber' :echo getStudentsNumber();
+            case 'getStudentsNumber': echo getStudentsNumber();
                 break;
-            
+             case 'showStudent': echo getStudent($id);
+                break;
+             case 'update': if(isset($_POST['dataObj']) && !empty($_POST['dataObj'])){
+                                $dataObj=$_POST['dataObj'];
+                                //$json = json_encode($dataObj);
+                           // echo $dataObj['name'];
+                              echo $dataObj[2];
+                            }
+     echo 'updateEdit($id, $dataObj[1],$dataObj[2], $dataObj[3])';
+                break;
             default :
         }
     }
+    
+    function getStudent($id){
+        echo $student = Student::get($id);
+         
+    }
+    
     function getStudentsNumber(){
-        $students = Student::count();
-        echo $students;   
+        echo Student::count();
+       
+    }
+    function updateEdit($id, $name, $phone, $email){
+       echo $Student::updateEdit($id, $name, $phone, $email);
+       
     }
     
     

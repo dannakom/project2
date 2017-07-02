@@ -16,6 +16,20 @@ function ajax( data) {
 		});
 	})
 }
+//  function sendAjax(url, method, data) {
+//		console.log(arguments);
+//		method = method || 'POST';
+//		return new Promise(function (resolve, reject) {
+//			$.ajax({
+//				url: url,
+//				type: method,
+//				data: data,
+//				success: function (data) {
+//					resolve(data);
+//				}, 
+//			})			
+//		})
+//	}
 
 initSchoolPage();
 

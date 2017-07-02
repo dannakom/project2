@@ -46,7 +46,7 @@ function buildListCourses(courseList) {
 		$('<ul>', {class: "list_container"})
 	).find(".list_container");
 	courseList.forEach(function (item) {
-		createItem(item).appendTo(Listcontainer);
+		createCourse(item).appendTo(Listcontainer);
 	});
 }
 function buildListStudents(studentList) {
@@ -64,17 +64,21 @@ function buildListStudents(studentList) {
 		$('<ul>', {class: "list_container"})
 	).find(".list_container");
 	studentList.forEach(function (item) {
-		createItem(item).appendTo(Listcontainer);
+		createStudent(item).appendTo(Listcontainer);
 	});
 }
-function createItem(item) {
+function createCourse(item) {
 	var li = $('<li>', {
 		class: "list-item", 
-		//click: addCourse, 
+		click:showCourse, 
 		"data-id": item.id
 	});
 
-	var poster = $('<img>', {src: 'img/'+item.image});
+	var poster = $('<img>',{
+            src: 'img/'+item.image,
+            click:showCourse,
+        });
+        
 	poster.appendTo(li);
 
 	var text = $('<span>', {text: item.name});
@@ -82,36 +86,62 @@ function createItem(item) {
 
 
 	return li;
-}
- function addStudent(){
-    var form = $('<form>').appendTo('#main_container');
-  
+    }
     
- }
-  function initContainer(){
-     ajax('getCoursesNumber').then(function (data) {
-//     console.log(data);
-     initCoursesNumber(JSON.parse(data));    
-    });
-    
-     ajax('getStudentsNumber').then(function (data) {
-//     console.log(data);
-     initStudentsNumber(JSON.parse(data));    
-    });
+    function createStudent(item) {
+	var li = $('<li>', {
+		class: "list-item", 
+		click: function (e) {
+			showStudent(e)}, 
+		"data-id": item.id
+	});
+
+	var poster = $('<img>',{
+            src: 'img/'+item.image,
+        });
         
+	poster.appendTo(li);
+
+	var text = $('<span>', {text: item.name});
+	text.appendTo(li);
+	return li;
+    }
+    function showStudent(e){ 
+        $('#main_container').empty();        
+        
+        var student = new StudentForm();
+            student.showStudent(e); 
+ 
+    }
+    
+        function showCourse(){ 
+        $('#main_container').empty();
+        
+        
+                   // var course = new CurseForm(item.id);
+           // course.build();
+        
+    }
+    
+    function initContainer(){
+        ajax('getCoursesNumber').then(function (data) {
+        initCoursesNumber(JSON.parse(data));    
+    });
+    
+    ajax('getStudentsNumber').then(function (data) {
+        initStudentsNumber(JSON.parse(data));    
+    });   
  }
- 
- 
- 
+  
  function initCoursesNumber(numbers){
-     console.log(numbers);
+   //  console.log(numbers);
       $('#main_container').append($('<h1>', {text: "Courses :"+numbers}));
      
  }
 
  
  function initStudentsNumber(numbers){
-     console.log(numbers);
+   //  console.log(numbers);
       $('#main_container').append($('<h1>', {text: "Students :"+numbers}));
      
  }

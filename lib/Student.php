@@ -20,6 +20,7 @@ class Student extends Person {
         return $result;
     }
 
+    
     public function count()
     {
             $conn = DB::getInstance()->getConnection();
@@ -38,9 +39,7 @@ class Student extends Person {
 
     public function countCourseStudents($id)
     {
-       
         $result = connectToDB("SELECT COUNT(*) as total FROM students WHERE course_id=$id");
-
         return $result->fetch_assoc()['total'];
     }
 
@@ -61,7 +60,6 @@ class Student extends Person {
 
     public function delete($id)
     {
-       
         $result = connectToDB("DELETE FROM students WHERE id = $id");
 
         if ($result)
@@ -72,20 +70,17 @@ class Student extends Person {
 
     public function read()
     {
-         $conn = DB::getInstance()->getConnection();
+        $conn = DB::getInstance()->getConnection();
         if ($conn->errno) {echo $conn->error; die();}
         $result = $conn->query("SELECT * FROM students ");
-//        $result = $conn->query("SELECT students.id as id, students.name as name, students.phone as phone, students.email as email, students.image as image, students.course as course_id, courses.name as course FROM students INNER JOIN courses on students.course = courses.id");
-       // $rows  = mysqli_fetch_array($result);
         $rows = array();
-         if ($result->num_rows > 0)
+        if ($result->num_rows > 0)
         {
             while ($row = $result->fetch_assoc()){
                 $rows[] = $row;
             }
            // echo json_encode($rows);
             return  json_encode($rows);
-
         }
         else
             echo "0 results";
@@ -94,11 +89,24 @@ class Student extends Person {
 
     function get($id)
     {
-        
-        $result = connectToDB("SELECT students.name as name, students.phone as phone, students.email as email, students.image as image, courses.name as course, students.id as course_id FROM students INNER JOIN courses on students.course = courses.id WHERE students.id=$id");
-
-        return $result->fetch_assoc();
+        $conn = DB::getInstance()->getConnection();
+        if ($conn->errno) {echo $conn->error; die();}
+       
+        $result = $conn->query("SELECT * FROM students WHERE id = $id");
+        $rows = array();
+        if ($result->num_rows > 0)
+        {
+            $row = $result->fetch_assoc();
+                
+        //    echo json_encode($row);
+            return  json_encode($row);
+        }
+        else
+            echo "0 results";
+        return $row;
     }
+    
+    
 
     public function update($id, $name, $phone, $email, $image, $course_id)
     {
@@ -113,6 +121,21 @@ class Student extends Person {
             $stmt = $conn->prepare("UPDATE students SET name=?, phone=?, email=?, course_id=? WHERE id=?");
             $stmt->bind_param('sssii', $name, $phone, $email, $course_id, $id);
         }
+        $stmt->execute();
+
+        if ($stmt->error)
+            echo $stmt->error;
+        else
+            echo "Student: ". $name ." was successfully updated";
+    }
+    
+    public function updateEdit($id, $name, $phone, $email)
+    {
+        $conn = DB::getInstance()->getConnection();
+        if ($conn->errno) {echo $conn->error; die();}
+        
+        $stmt = $conn->prepare("UPDATE students SET name=?, phone=?, email=? WHERE id=?");
+        $stmt->bind_param('sssi', $name, $phone, $email, $id);
         $stmt->execute();
 
         if ($stmt->error)

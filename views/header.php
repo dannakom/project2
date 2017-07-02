@@ -20,6 +20,30 @@ $role =$_SESSION["role"];
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link type="text/css" rel="stylesheet" href="css/headerStyle.css"/>
         <title>School Entry Page</title>
+        <style>
+/*            .header_container{
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+.header{
+    width:20%;
+}
+.header_logo{
+    width:20%;
+}
+.school-logo{
+     width:60%;
+     display: block;
+}
+  headerlinks{
+    text-decoration: none;
+    padding: 0 10px;
+    text-align: center;
+    color: red;
+    background-color:powderblue;
+  }*/
+        </style>
     </head>
     <body>
         <div class="header_container">
